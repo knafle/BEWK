@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "BEWKGameMode.generated.h"
 
+class APawn;
+
 UCLASS(minimalapi)
 class ABEWKGameMode : public AGameModeBase
 {
@@ -13,6 +15,7 @@ class ABEWKGameMode : public AGameModeBase
 
 public:
 	ABEWKGameMode();
+
 };
 
 
