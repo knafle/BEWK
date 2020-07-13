@@ -4,6 +4,7 @@
 #include "BEWKBoss.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "../Components/HealthComponent.h"
 
 // Sets default values
 ABEWKBoss::ABEWKBoss()
@@ -21,6 +22,9 @@ ABEWKBoss::ABEWKBoss()
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 640.f, 0.f);
 	GetCharacterMovement()->bConstrainToPlane = true;
 	GetCharacterMovement()->bSnapToPlaneAtStart = true;
+
+	//Configure health component
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 
 	// Activate ticking in order to update the cursor every frame.
 	PrimaryActorTick.bCanEverTick = true;

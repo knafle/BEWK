@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "BEWKBoss.generated.h"
 
+class UHealthComponent;
+
 UCLASS(Blueprintable)
 class BEWK_API ABEWKBoss : public ACharacter
 {
@@ -25,5 +27,13 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	/** Returns Health component subobject **/
+	FORCEINLINE UHealthComponent* GetHealthComponent() { return HealthComponent; }
+
+private:
+	/** Top down camera */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
+	UHealthComponent* HealthComponent;
 
 };
