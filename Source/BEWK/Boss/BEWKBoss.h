@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
 #include "BEWKBoss.generated.h"
 
 class UHealthComponent;
 
 UCLASS(Blueprintable)
-class BEWK_API ABEWKBoss : public ACharacter
+class BEWK_API ABEWKBoss : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -30,10 +31,16 @@ public:
 
 	/** Returns Health component subobject **/
 	FORCEINLINE UHealthComponent* GetHealthComponent() { return HealthComponent; }
+	/** Returns AbilitySystem subobject **/
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override { return AbilitySystem; }
 
 private:
 	/** Top down camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
 	UHealthComponent* HealthComponent;
+
+	/** Our ability system */ 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Abilities, meta = (AllowPrivateAccess = "true"))
+	UAbilitySystemComponent* AbilitySystem;
 
 };

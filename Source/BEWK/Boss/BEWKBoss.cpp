@@ -5,6 +5,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "../Components/HealthComponent.h"
+#include "AbilitySystemComponent.h"
 
 // Sets default values
 ABEWKBoss::ABEWKBoss()
@@ -25,6 +26,9 @@ ABEWKBoss::ABEWKBoss()
 
 	//Configure health component
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+
+	// Our ability system component.
+	AbilitySystem = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystem"));
 
 	// Activate ticking in order to update the cursor every frame.
 	PrimaryActorTick.bCanEverTick = true;
